@@ -7,9 +7,12 @@
 	import favicon from '#lib/assets/favicon.svg';
 	import type { LayoutProps } from './$types';
 
+    import Header from '#lib/comps/header.svelte';
+
 	let { children }: LayoutProps = $props();
 
     onMount(() => {
+        // we try initializing auth session on every page reload
         initializeAuth()
             .then((authenticated) => {
                 if (authenticated && window.location.pathname === '/auth/callback') {
@@ -27,4 +30,13 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-{@render children()}
+<div class="grid grid-cols-12 min-h-screen max-w-7xl mx-auto">
+    <main class="flex flex-col min-h-screen col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2">
+        <!-- render header on all pages -->
+        <Header />
+        <div class="flex-1 flex flex-col min-h-0">
+            <!-- render main content -->
+            {@render children()}
+        </div>
+    </main>
+</div>
