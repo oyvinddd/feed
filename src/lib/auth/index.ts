@@ -79,3 +79,12 @@ export async function logout(): Promise<void> {
     updateAuthState(currentSession);
 }
 
+export async function solidFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
+    const currentSession = await getSession()
+    if (!currentSession.info.isLoggedIn) {
+        throw new Error('Not authenticated')
+    }
+
+    return currentSession.fetch(input, init)
+}
+
