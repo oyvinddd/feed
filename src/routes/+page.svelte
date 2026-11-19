@@ -9,6 +9,11 @@
         'A simple, open conversation.'
     ]) 
 
+    function handleSendMessage(message: string) {
+        messages.push(message);
+        console.log(`Sending the message: ${message}`);
+    }
+
 </script>
 
 <svelte:head>
@@ -25,5 +30,6 @@
     </section>
 
     <!-- Message composer -->
-    <BottomBar />
+    <BottomBar onSend={handleSendMessage} />
 </div>
+
