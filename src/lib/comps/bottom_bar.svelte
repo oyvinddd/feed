@@ -14,7 +14,6 @@
         // pass message back to the parent page
         onSend(message);
         draft = '';
-        console.log("HEHKEH");
     }
 
 </script>
@@ -25,6 +24,10 @@
             bind:value={draft}
             class="text-sm min-w-0 flex-1 outline-none" 
             placeholder="Write a message..." 
+            spellcheck="false"
+            autocorrect="off"
+            autocomplete="off"
+            autocapitalize="off"
             aria-label="Message" 
         />
         <button type="submit" class="cursor-pointer ml-auto shrink-0 px-3 py-1 rounded-lg bg-cyan-700 font-medium">Send</button>

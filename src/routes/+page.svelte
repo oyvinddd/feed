@@ -12,13 +12,16 @@
     let messages = $state([{ userId: 'some-id', username: 'oyvind_h', text: 'Welcome to FEED!' }]);
 
     function handleSendMessage(text: string) {
+        const profile = $authState.profile;
+        if (!profile) return;
+
         const message: Message = {
-            userId: 'my-id-here',
-            username: 'my-username-here',
-            text: text
+            userId: profile.webId,
+            username: profile.name,
+            text: text,
+            timestamp: new Date()
         };
         messages.push(message);
-        console.log(`Sending the message: ${message}`);
     }
 
     onMount(async () => {

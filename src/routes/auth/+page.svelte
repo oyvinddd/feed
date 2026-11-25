@@ -49,7 +49,7 @@
         Initializing authentication...
       </p>
 
-    {:else if $authState.isAuthenticated}
+    {:else if $authState.authenticated}
       <div class="space-y-4 rounded-xl border border-slate-800 bg-slate-900 p-6">
         <p class="text-sm text-slate-400">Authenticated as</p>
 
