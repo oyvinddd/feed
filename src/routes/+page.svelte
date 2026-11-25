@@ -2,17 +2,38 @@
 
     import ChatRow from '#lib/comps/chat_row.svelte';
     import BottomBar from '#lib/comps/bottom_bar.svelte';
-    
-    let draft = $state('')
-    let messages = $state([
-        'Welcome to FEED.',
-        'A simple, open conversation.'
-    ]) 
 
-    function handleSendMessage(message: string) {
+    import { onMount } from 'svelte';
+    import { goto } from '$app/navigation';
+    import { authState, initializeAuth } from '#lib/auth';
+    import type { Message } from '#lib/types/message';
+    
+    let draft = $state('');
+    let messages = $state([{ userId: 'some-id', username: 'oyvind_h', text: 'Welcome to FEED!' }]);
+
+    function handleSendMessage(text: string) {
+        const message: Message = {
+            userId: 'my-id-here',
+            username: 'my-username-here',
+            text: text
+        };
         messages.push(message);
         console.log(`Sending the message: ${message}`);
     }
+
+    onMount(async () => {
+        const loginPath = '/auth';
+        try {
+            const authenticated = await initializeAuth();
+            if (!authenticated) {
+                await goto(loginPath);
+                return;
+            }
+        } catch (err) {
+            await goto(loginPath);
+            return;
+        }
+    });
 
 </script>
 
@@ -23,9 +44,9 @@
 
 <div class="bg-red-500 flex flex-1 min-h-0 flex-col">
     <!-- Message feed -->
-    <section class="flex-1 min-h-0 space-y-3 overflow-y-auto p-4 sm:p-6" aria-label="Message feed">
+    <section class="flex-1 min-h-0 space-y-3 overflow-y-auto px-2 sm:px-4" aria-label="Message feed">
         {#each messages as message, i (i)}
-            <ChatRow {message} />
+            <ChatRow message={message} isMe={true} />
         {/each}
     </section>
 

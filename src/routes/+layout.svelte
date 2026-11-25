@@ -30,11 +30,11 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div class="grid grid-cols-12 min-h-screen max-w-7xl mx-auto">
-    <main class="flex flex-col min-h-screen col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2">
+<div class="grid grid-cols-12 h-screen max-w-7xl mx-auto">
+    <main class="flex flex-col h-screen col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2">
         <!-- render header on all pages -->
         <Header />
-        <div class="flex-1 flex flex-col min-h-0">
+        <div class="flex flex-1 flex-col min-h-0">
             <!-- render main content -->
             {@render children()}
         </div>

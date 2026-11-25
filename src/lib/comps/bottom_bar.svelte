@@ -19,7 +19,7 @@
 
 </script>
 
-<form class="shrink-0 p-3 sm:p-4" onsubmit={sendMessage}>
+<form class="shrink-0 px-2 sm:px-4 pb-2" onsubmit={sendMessage}>
     <div class="flex w-full items-center px-4 py-3 rounded-lg border border-slate-700 bg-slate-900">
         <input 
             bind:value={draft}
