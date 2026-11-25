@@ -42,7 +42,7 @@
     <meta name="description" content="A more open, user-controlled way to chat." />
 </svelte:head>
 
-<div class="bg-red-500 flex flex-1 min-h-0 flex-col">
+<div class="flex flex-1 min-h-0 flex-col">
     <!-- Message feed -->
     <section class="flex-1 min-h-0 space-y-3 overflow-y-auto px-2 sm:px-4" aria-label="Message feed">
         {#each messages as message, i (i)}

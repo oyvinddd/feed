@@ -6,7 +6,7 @@
 
 </script>
 
-<article class="bg-blue-500">
+<article class="">
     <div class="text-white">
         <p class="font-bold">{message.username}<span class="pl-2 font-medium text-xs text-white/60">10:32 AM</span></p>
     </div>
